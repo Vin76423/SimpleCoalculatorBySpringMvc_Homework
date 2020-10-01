@@ -6,13 +6,15 @@
     <title>calc_page</title>
 </head>
 <body>
-    <form action="/calc" method="post" id="form">
+    <form action="/api/calc" method="post" <%--id="form"--%>>
         <label for="num1">first number:</label>
         <input id="num1" name="num1" type="text">
         <label for="num2">second number:</label>
         <input id="num2" name="num2" type="text">
+<%--        <label for="operationType">operation type:</label>--%>
+<%--        <input id="operationType" name="operationType" type="text">--%>
         <label for="operationType">operation type:</label>
-        <select id="operationType" name="operationType">
+        <select id="operationType" name="operationType" typeof="text">
             <option value="SUM">+</option>
             <option value="SUB">-</option>
             <option value="MUL">*</option>
@@ -29,26 +31,29 @@
         result : ${result}
     </c:if>
 
+    ${massage}
 
-    <script>
-        var form = document.getElementById('form');
+    <a href="/api">Home</a>
 
-        form.onsubmit = function () {
-            if (isNaN(Number(form.num1.value))) {
-                alert('You write invalid value for FIRST number!')
-                return false;
-            }
-            else if (isNaN(Number(form.num2.value))) {
-                alert('You write invalid value for SECOND number!')
-                return false;
-            }
-            else if (form.num2.value == 0 && form.operationType.value === 'DIV') {
-                alert('Cannot be division by zero!')
-                return false;
-            }
+<%--    <script>--%>
+<%--        var form = document.getElementById('form');--%>
 
-            return true;
-        }
-    </script>
+<%--        form.onsubmit = function () {--%>
+<%--            if (isNaN(Number(form.num1.value))) {--%>
+<%--                alert('You write invalid value for FIRST number!')--%>
+<%--                return false;--%>
+<%--            }--%>
+<%--            else if (isNaN(Number(form.num2.value))) {--%>
+<%--                alert('You write invalid value for SECOND number!')--%>
+<%--                return false;--%>
+<%--            }--%>
+<%--            else if (form.num2.value == 0 && form.operationType.value === 'DIV') {--%>
+<%--                alert('Cannot be division by zero!')--%>
+<%--                return false;--%>
+<%--            }--%>
+
+<%--            return true;--%>
+<%--        }--%>
+<%--    </script>--%>
 </body>
 </html>

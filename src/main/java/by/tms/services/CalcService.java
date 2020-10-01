@@ -1,25 +1,29 @@
 package by.tms.services;
 
-public enum  CalcService {
-    SUM{
-        @Override
-        public double run(double a, double b) { return a + b; }
-    },
+import by.tms.entity.Operation;
+import org.springframework.stereotype.Service;
 
-    SUB{
-        @Override
-        public double run(double a, double b) { return a - b; }
-    },
+@Service
+public class CalcService {
 
-    MUL{
-        @Override
-        public double run(double a, double b) { return a * b; }
-    },
-
-    DIV{
-        @Override
-        public double run(double a, double b) { return a / b; }
-    };
-
-    public abstract double run(double a, double b) throws ArithmeticException;
+    public double calc(Operation operation) {
+        switch (operation.getOperationType()) {
+            case "SUM" -> {
+                return operation.getNum1() + operation.getNum2();
+            }
+            case "SUB" -> {
+                return operation.getNum1() - operation.getNum2();
+            }
+            case "MUL" -> {
+                return operation.getNum1() * operation.getNum2();
+            }
+            case "DIV" -> {
+                if (operation.getNum2() == 0) {
+                    throw new ArithmeticException();
+                }
+                return operation.getNum1() / operation.getNum2();
+            }
+            default -> throw new UnsupportedOperationException("Operation not found!");
+        }
+    }
 }
