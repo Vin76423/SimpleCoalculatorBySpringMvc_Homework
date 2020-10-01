@@ -6,22 +6,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalcService {
 
-    public double calc(Operation operation) {
-        switch (operation.getOperationType()) {
+    public double calc(String operationType, double num1, double num2) {
+        switch (operationType) {
             case "SUM" -> {
-                return operation.getNum1() + operation.getNum2();
+                return num1 + num2;
             }
             case "SUB" -> {
-                return operation.getNum1() - operation.getNum2();
+                return num1 - num2;
             }
             case "MUL" -> {
-                return operation.getNum1() * operation.getNum2();
+                return num1 * num2;
             }
             case "DIV" -> {
-                if (operation.getNum2() == 0) {
+                if (num2 == 0) {
                     throw new ArithmeticException();
                 }
-                return operation.getNum1() / operation.getNum2();
+                return num1 / num2;
             }
             default -> throw new UnsupportedOperationException("Operation not found!");
         }

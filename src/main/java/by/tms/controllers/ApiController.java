@@ -91,8 +91,8 @@ public class ApiController {
     }
 
     @PostMapping(path = "/calc")
-    public ModelAndView getCalcResult(ModelAndView modelAndView, Operation operation) {
-        double result = calcService.calc(operation);
+    public ModelAndView getCalcResult(ModelAndView modelAndView, double num1, double num2, String operationType) {
+        double result = calcService.calc(operationType, num1, num2);
         modelAndView.addObject("result", result);
         modelAndView.setViewName("calc");
         return modelAndView;
